@@ -26,3 +26,4 @@ model <- "gpt-3.5-turbo"
 prompt <- "Generate a list of three made-up book titles along with their authors and genres. Provide them in JSON format with the following keys:book_id, title, author, genre."
 
 answer <- get_completions(prompt = prompt, model = model)
+
