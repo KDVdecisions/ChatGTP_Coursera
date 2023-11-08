@@ -10,5 +10,10 @@ openai::create_completion(
 )
 
 openai::create_image(
-  prompt = "NCDOT ATLAS project conserving nature and saving money with probabilistic models in the style of picasso"
+  prompt = "Christmas holiday card with a heart, flying hawk, and Christmas tree mixing the styles of Yukon artists Nathalie Parenteau"
   )
+
+openai::create_image(
+  prompt = "A christmas card with wolves giving comfort to a woman under a starry sky in the style of Yukon artists Nathalie Parenteau but with more red."
+)
+
