@@ -10,10 +10,10 @@ openai::create_completion(
 )
 
 openai::create_image(
-  prompt = "Christmas holiday card with a heart, flying hawk, and Christmas tree mixing the styles of Yukon artists Nathalie Parenteau"
+  prompt = "Christmas holiday card with a bird and an otter in the styles of the Group of Seven artists."
   )
 
 openai::create_image(
-  prompt = "A christmas card with wolves giving comfort to a woman under a starry sky in the style of Yukon artists Nathalie Parenteau but with more red."
+  prompt = "simple icon based on themes of cooperation, modeling, and transportation"
 )
 

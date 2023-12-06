@@ -4,7 +4,7 @@
 
 library(openai)
 
-source("function_get_completions.R")
+source("Functions/get_completion.R")
 
 # Principle 1: Write clear and specific instructions ----
 
@@ -24,7 +24,7 @@ more detailed and relevant outputs."
 prompt <- sprintf("Summarize the text delimited by triple backticks into a single sentence.
 ```%s```", text)
 
-response <- get_completions(prompt)
+response <- get_completion(prompt)
 response
 
 # Tactic 2: Ask for a structured output ----
@@ -34,7 +34,7 @@ with their authors and genres.
 Provide them in JSON format with the following keys: 
 book_id, title, author, genre."
 
-response = get_completions(prompt)
+response = get_completion(prompt)
 response
 
 # Tactic 3: Ask the model to check whether conditions are satisfied ----
@@ -63,9 +63,9 @@ then simply write \"No steps provided.\"
 
 ===%s===", text_1)
 
-response = get_completions(prompt)
-print("Completion for Text 1:")
-print(response)
+response = get_completion(prompt)
+cat("Completion for Text 1:")
+cat(response)
 
 # Tactic 4: Few-shot prompting ----
 
@@ -80,8 +80,8 @@ the most intricate tapestry begins with a solitary thread.
 
 <child>: Teach me about resilience."
 
-response = get_completions(prompt)
-print(response)
+response = get_completion(prompt)
+cat(response)
 
 # Principle 2: Give the model time to “think” ----
 
@@ -111,9 +111,9 @@ Separate your answers with line breaks.
 Text:
 ```%s```", text)
 
-response = get_completions(prompt_1)
-print("Completion for prompt 1:")
-print(response)
+response = get_completion(prompt_1)
+cat("Completion for prompt 1:")
+cat(response)
 
 prompt_2 = sprintf("Your task is to perform the following actions: 
 1 - Summarize the following text delimited by 
@@ -132,9 +132,9 @@ Output JSON: <json with summary and num_names>
 
 Text: <%s>", text)
 
-response = get_completions(prompt_2)
-print("\nCompletion for prompt 2:")
-print(response)
+response = get_completion(prompt_2)
+cat("\nCompletion for prompt 2:")
+cat(response)
 
 #Tactic 2: Instruct the model to work out its own solution before rushing to a conclusion ----
 
@@ -160,8 +160,8 @@ Costs:
 3. Maintenance cost: 100,000 + 100x
 Total cost: 100x + 250x + 100,000 + 100x = 450x + 100,000"
 
-response = get_completions(prompt)
-print(response)
+response = get_completion(prompt)
+cat(response)
 
 
 prompt = "Your task is to determine if the student's solution \
@@ -219,8 +219,8 @@ Total cost: 100x + 250x + 100,000 + 100x = 450x + 100,000
 ```
 Actual solution:"
 
-response = get_completions(prompt)
-print(response)
+response = get_completion(prompt)
+cat(response)
 
 # Model Limitations: Hallucinations... ----
 
@@ -230,8 +230,8 @@ print(response)
 
 prompt = "Tell me about AeroGlide UltraSlim Smart Toothbrush by Boie"
 
-response = get_completions(prompt)
-print(response)
+response = get_completion(prompt)
+cat(response)
 
 # A strategy to reduce hallucinations is to ask the model to first identify reliable sources on the topic, then use those sources to construct a summary.
 
@@ -290,8 +290,8 @@ triple backticks.
 
 Technical specifications: ```%s```"
 
-response = get_completions(prompt)
-print(response)
+response = get_completion(prompt)
+cat(response)
 
 # Issue 1: The text is too long
 
@@ -307,5 +307,5 @@ Use at most 50 words.
 
 Technical specifications: ```%s```"
 
-response = get_completions(prompt)
-print(response)
+response = get_completion(prompt)
+cat(response)

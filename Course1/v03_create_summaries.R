@@ -4,7 +4,7 @@
 
 library(openai)
 
-source("function_get_completions.R")
+source("Functions/get_completion.R")
 
 # review for a plush toy
 review_1 = "Got this panda plush toy for my daughter's birthday, who loves it and takes it everywhere. It's soft and super cute, and its face has a friendly look. It's a bit small for what I paid though. I think there 
@@ -27,13 +27,13 @@ that you plan to use that way you can avoid adding so much ice if at all-when ma
 reviews = list(review_1, review_2, review_3, review_4)
 
 
-for (i in seq(reviews)){
+for (i in seq(reviews)) {
   prompt = sprintf("Your task is to generate a short summary of a product review from an ecommerce site.  
   Summarize the review below, delimited by triple backticks in at most 20 words. 
 
     Review: ```%s```", reviews[i])
-  response = get_completions(prompt)
-  print(paste(i, response, "\n"))
+  response = get_completion(prompt)
+  cat(paste(i, response, "\n"))
 }
 
 

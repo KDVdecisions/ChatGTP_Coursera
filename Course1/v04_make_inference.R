@@ -4,7 +4,7 @@
 
 library(openai)
 
-source("function_get_completions.R")
+source("Function/get_completion.R")
 
 lamp_review = "Needed a nice lamp for my bedroom, and this one had additional storage and not too high of a price point. Got it fast.  The string to our lamp broke during the transit and the company happily sent over a new one. Came within a few days as well. It was easy to put together.  I had a missing part, so I contacted their support and they very quickly got me the missing piece! Lumina seems to me to be a great company that cares about their customers and products!!"
 
@@ -12,8 +12,8 @@ lamp_review = "Needed a nice lamp for my bedroom, and this one had additional st
 prompt = sprintf("What is the sentiment of the following product review, 
 which is delimited with triple backticks?  Review text: '''%s'''", lamp_review)
 
-response = get_completions(prompt)
-print(response)
+response = get_completion(prompt)
+cat(response)
 
 # Simplify response to one word ----
 prompt = sprintf("What is the sentiment of the following product review, 
@@ -23,8 +23,8 @@ Give your answer as a single word, either 'positive' or 'negative'.
 
 Review text: '''%s'''", lamp_review)
 
-response = get_completions(prompt)
-print(response)
+response = get_completion(prompt)
+cat(response)
 
 # Give a set of responses ----
 prompt = sprintf("Identify a list of emotions that the writer of the \
@@ -34,8 +34,8 @@ lower-case words separated by commas.
 
 Review text: '''%s'''", lamp_review)
 
-response = get_completions(prompt)
-print(response)
+response = get_completion(prompt)
+cat(response)
 
 # Identify anger ----
 prompt = sprintf("Is the writer of the following review expressing anger?\
@@ -44,8 +44,8 @@ Give your answer as either yes or no.
 
 Review text: '''%s'''", lamp_review)
 
-response = get_completions(prompt)
-print(response)
+response = get_completion(prompt)
+cat(response)
 
 # Extract company name and item purchased ----
 
@@ -62,8 +62,8 @@ Make your response as short as possible.
   
 Review text: '''%s'''", lamp_review)
 
-response = get_completions(prompt)
-print(response)
+response = get_completion(prompt)
+cat(response)
 
 # Do multiple tasks at once ----
 prompt = sprintf("Identify the following items from the review text: 
@@ -82,8 +82,8 @@ Format the Anger value as a boolean.
 
 Review text: '''%s'''", lamp_review)
 
-response = get_completions(prompt)
-print(response)
+response = get_completion(prompt)
+cat(response)
 
 # Infer topics in narrative ----
 
@@ -122,8 +122,8 @@ Format your response as a list of items separated by commas.
 
 Text sample: '''%s'''", story)
 
-response = get_completions(prompt)
-print(response)
+response = get_completion(prompt)
+cat(response)
 
 topic_list <- c("nasa", "local government", "engineering", 
   "employee satisfaction", "federal government")
@@ -139,8 +139,8 @@ List of topics: %s
 
 Text sample: '''%s'''", paste(topic_list, collapse = " ,"), story)
 
-response = get_completions(prompt)
-print(response)
+response = get_completion(prompt)
+cat(response)
 
 
 

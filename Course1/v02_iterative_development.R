@@ -4,7 +4,7 @@
 
 library(openai)
 
-source("function_get_completions.R")
+source("Functions/get_completion.R")
 
 
 # Issue 1: The text is too long
@@ -85,7 +85,12 @@ Place the description in a <div> element.
 Technical specifications: ```%s```", fact_sheet_chair)
 
 
-response <- get_completions(prompt)
-response
+response <- get_completion(prompt)
+cat(response)
 
+ideas <- "A supply chain usually describes the cycle of production, use, and disposal.  But perhaps intagibles like ideas, dreams, beauty, hope, compassion can also be described as a supply chain.  What are the raw material of intangible cultural hertitage?  What is mined and from where?  How long do we wear our ideas?  Do we recycle our hopes or dispose of them?"
 
+prompt <- paste("Write a poem of 16 lines about an intangible supply chain, inspired by the text denoted by triple back tics.  Text: ```%s```", ideas)
+
+response <- get_completion(prompt)
+cat(response)
