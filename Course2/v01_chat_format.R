@@ -17,7 +17,7 @@ messages =  list(
   )
 
 response = get_completion_from_messages(messages, temp = 1)
-print(response)
+cat(response)
 
 # Example 02:
 # Limit length of response
@@ -29,7 +29,7 @@ messages =  list(
 )
 
 response = get_completion_from_messages(messages, temp = 1)
-print(response)
+cat(response)
 
 # Example 03:
 # Assign multiple criteria to AI response
@@ -42,7 +42,7 @@ messages =  list(
 
 # extra
 response = get_completion_from_messages(messages, temp = 1)
-print(response)
+cat(response)
 
 messages =  list(
   list("role" = "system",
@@ -52,7 +52,7 @@ messages =  list(
 )
 
 response = get_completion_from_messages(messages, temp = 1)
-print(response)
+cat(response)
 
 # The lesson covers the concept of tokens as the basic unit in LLMs
 
@@ -61,10 +61,10 @@ print(response)
 #  - certain tasks are not understood without additional guidance
 
 response = get_completions("What is the capital of France?")
-print(response) # We could either get the answer OR another similar quiz question (unless we ask it to answer the question)
+cat(response) # We could either get the answer OR another similar quiz question (unless we ask it to answer the question)
 
 response = get_completions("Take the letters in lollipop and reverse them")
-print(response) # it reverses the tokens NOT the letters - not the expected answer
+cat(response) # it reverses the tokens NOT the letters - not the expected answer
 
 response = get_completions("Take the letters in l-o-l-l-i-p-o-p and reverse them")
-print(response) # each letter is assigned a token and then these are reversed, as expected
+cat(response) # each letter is assigned a token and then these are reversed, as expected

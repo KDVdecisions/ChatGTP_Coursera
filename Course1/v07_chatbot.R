@@ -123,7 +123,7 @@ bottled water 5.00")
       grow_dialog$dialog <- rbind(grow_dialog$dialog, new_df_user)
       
       # Update with bot reply
-      response <- shiny_get_completion_from_messages(messages = grow_context$context)
+      response <- get_completion_from_messages(messages = grow_context$context)
       new_context_bot <- list(role = "assistant", content = response)
       grow_context$context <- append(grow_context$context, list(new_context_bot))
       new_df_bot <- data.frame(Speaker = "AI Assistant", Text = response)
