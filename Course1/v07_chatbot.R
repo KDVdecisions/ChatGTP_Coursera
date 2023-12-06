@@ -65,9 +65,20 @@ print(response)
 
 library(shiny)
 
-context = list(
-  list(role = "system", 
-       content = "You are OrderBot, an automated service to collect orders for a pizza restaurant. \
+# to run this online would require either a user input for the API key or another method to establish the secure connection without exposing the secret key
+shinyApp(
+  ui = fluidPage(
+    textInput("user", label = "Pizza Order Bot", value = "Enter your chat text here..."),
+    actionButton("submit", label = "Submit!"),
+    tableOutput("dialog_table")
+  ),
+  
+  server = function(input, output) {
+    
+    grow_context <- reactiveValues(
+      context = list(
+        list(role = "system", 
+             content = "You are OrderBot, an automated service to collect orders for a pizza restaurant. \
 You first greet the customer, then collects the order, \
 and then asks if it's a pickup or delivery. \
 You wait to collect the entire order, then summarize it and check for a final \
@@ -94,28 +105,7 @@ Drinks: \
 coke 3.00, 2.00, 1.00 \
 sprite 3.00, 2.00, 1.00 \
 bottled water 5.00")
-)
-
-shiny_get_completion_from_messages <- function(messages, model = "gpt-3.5-turbo", temp = 0, max_tokens = 500) {
-  messages <- messages
-  response <- openai::create_chat_completion(model = model, 
-                                             messages = messages, 
-                                             temperature = temp,
-                                             max_tokens = max_tokens)
-  return(response$choices$message.content)
-}
-
-shinyApp(
-  ui = fluidPage(
-    textInput("user", label = "Pizza Order Bot", value = "Enter your chat text here..."),
-    actionButton("submit", label = "Submit!"),
-    tableOutput("dialog_table")
-  ),
-  
-  server = function(input, output) {
-    
-    grow_context <- reactiveValues(
-      context = context
+      )
     )
     
     grow_dialog <- reactiveValues(
