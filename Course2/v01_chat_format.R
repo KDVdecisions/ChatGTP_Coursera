@@ -3,9 +3,9 @@
 # 
 # Unit: Language Models and the Chat Format
 
-source("function_get_completions.R")
-source("function_get_completions_from_messages.R")
-source("function_get_completions_and_token_count.R")
+source("Functions/get_completion.R")
+source("Functions/get_completion_from_messages.R")
+source("Functions/get_completion_and_token_count.R")
 
 # EXAMPLE 01:
 # Define a role to the AI
@@ -60,11 +60,11 @@ cat(response)
 #  - tokens are typically 3-4 charcters long NOT whole words
 #  - certain tasks are not understood without additional guidance
 
-response = get_completions("What is the capital of France?")
+response = get_completion("What is the capital of France?")
 cat(response) # We could either get the answer OR another similar quiz question (unless we ask it to answer the question)
 
-response = get_completions("Take the letters in lollipop and reverse them")
+response = get_completion("Take the letters in lollipop and reverse them")
 cat(response) # it reverses the tokens NOT the letters - not the expected answer
 
-response = get_completions("Take the letters in l-o-l-l-i-p-o-p and reverse them")
+response = get_completion("Take the letters in l-o-l-l-i-p-o-p and reverse them")
 cat(response) # each letter is assigned a token and then these are reversed, as expected
